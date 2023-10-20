@@ -13,7 +13,8 @@ import net.rahmi.springboottutorial.dto.MemberDTO;
 
 @RestController
 @RequestMapping("/api/v1/put-api")
-public class PutController {
+public class PutController 
+{
 	
 	//http://localhost:9090/api/v1/put-api/default
     @PutMapping(value = "/default")
