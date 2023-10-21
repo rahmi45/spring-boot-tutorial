@@ -1,4 +1,4 @@
-package net.rahmi.springboottutorial.dto;
+package net.rahmi.springboottutorial.data.dto;
 
 import lombok.Getter;
 import lombok.Setter;

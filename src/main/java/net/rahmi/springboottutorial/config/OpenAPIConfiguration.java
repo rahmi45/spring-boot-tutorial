@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 		  license = @License(
 		    name = "MIT Licence", 
 		    url = "https://github.com/thombergs/code-examples/blob/master/LICENSE")),
-		  servers = @Server(url = "http://localhost:9090")
+		  servers = @Server(url = "http://localhost:8080")
 		)
 public class OpenAPIConfiguration {
 

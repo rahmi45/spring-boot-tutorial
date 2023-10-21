@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.rahmi.springboottutorial.dto.MemberDTO;
+import net.rahmi.springboottutorial.data.dto.MemberDTO;
 
 @RestController
 @RequestMapping("/api/v1/post-api")
