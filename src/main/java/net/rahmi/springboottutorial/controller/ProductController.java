@@ -1,5 +1,7 @@
 package net.rahmi.springboottutorial.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +18,31 @@ import net.rahmi.springboottutorial.service.ProductService;
 @RequestMapping("/api/v1/product-api")
 public class ProductController 
 {	
+	
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+	
 	@Autowired
 	private ProductService productService;
 	
-	// http://localhost:8080/api/v1/product-api/product/{productId}
+	  // http://localhost:8080/api/v1/product-api/product/{productId}
 	  @GetMapping(value = "/product/{productId}")
-	  public ProductDto getProduct(@PathVariable String productId) {
-	    return productService.getProduct(productId);
+	  public ProductDto getProduct(@PathVariable String productId) 
+	  {
+	    //return productService.getProduct(productId);
+	    long startTime = System.currentTimeMillis();
+	    LOGGER.info("[ProductController] perform {} of Spring-boot API.", "getProduct");
+	    
+	    ProductDto productDto = productService.getProduct(productId);
+	    LOGGER.info("[ProductController] Response :: productId = {}, productName = {}, productPrice = {}, productStock = {}, Response Time = {}ms", productDto.getProductId(),
+	            productDto.getProductName(), productDto.getProductPrice(), productDto.getProductStock(), (System.currentTimeMillis()- startTime));
+	    return productDto;
+	    
 	  }
 	  
 	  // http://localhost:8080/api/v1/product-api/product
 	  @PostMapping(value = "/product")
-	  public ProductDto createProduct(@RequestBody ProductDto productDto) {
+	  public ProductDto createProduct(@RequestBody ProductDto productDto) 
+	  {
 
 	    String productId = productDto.getProductId();
 	    String productName = productDto.getProductName();
@@ -39,7 +54,8 @@ public class ProductController
 	  
 	  // http://localhost:8080/api/v1/product-api/product/{productId}
 	  @DeleteMapping(value = "/product/{productId}")
-	  public ProductDto deleteProduct(@PathVariable String productId) {
+	  public ProductDto deleteProduct(@PathVariable String productId) 
+	  {
 	    return null;
 	  }
 	
