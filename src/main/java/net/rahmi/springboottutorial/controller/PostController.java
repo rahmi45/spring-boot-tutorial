@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import net.rahmi.springboottutorial.data.dto.MemberDTO;
 
 @RestController
@@ -14,13 +13,15 @@ public class PostController
 {
 	// http://localhost:8080/api/v1/post-api/default
     @PostMapping(value = "/default")
-    public String postMethod() {
+    public String postMethod() 
+    {
         return "Hello World!";
     }
 
     // http://localhost:8080/api/v1/post-api/member
     @PostMapping(value = "/member")
-    public String postMember(@RequestBody Map<String, Object> postData) {
+    public String postMember(@RequestBody Map<String, Object> postData) 
+    {
         StringBuilder sb = new StringBuilder();
 
         postData.entrySet().forEach(map -> {
@@ -36,7 +37,9 @@ public class PostController
     
     // http://localhost:8080/api/v1/post-api/member2
     @PostMapping(value = "/member2")
-    public String postMemberDto(@RequestBody MemberDTO memberDTO) {
+    public String postMemberDto(@RequestBody MemberDTO memberDTO) 
+    {
         return memberDTO.toString();
     }
+    
 }

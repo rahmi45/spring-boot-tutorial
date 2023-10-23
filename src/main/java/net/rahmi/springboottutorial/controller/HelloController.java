@@ -26,5 +26,29 @@ public class HelloController
 	    LOGGER.warn("Warn Log");
 	    LOGGER.error("Error Log");
 	}
+	
+	@PostMapping("/exception")
+	public void exceptionTest() throws Exception 
+	{
+	    throw new Exception();
+	}
+	
+//	@ExceptionHandler(value = Exception.class)
+//	public ResponseEntity<Map<String, String>> ExceptionHandler(Exception e) 
+//	{
+//	    HttpHeaders responseHeaders = new HttpHeaders();
+//
+//	    HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+//	    
+//	    LOGGER.info(e.getLocalizedMessage());
+//	    LOGGER.info("Controller Appel à ExceptionHandler ");
+//
+//	    Map<String, String> map = new HashMap<>();
+//	    map.put("error type", httpStatus.getReasonPhrase());
+//	    map.put("code", "400");
+//	    map.put("message", "Une erreur s'est produite");
+//
+//	    return new ResponseEntity<>(map, responseHeaders, httpStatus);
+//	}
 
 }

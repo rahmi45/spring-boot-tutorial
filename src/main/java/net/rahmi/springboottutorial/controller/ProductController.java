@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.rahmi.springboottutorial.common.Constants.ExceptionClass;
+import net.rahmi.springboottutorial.common.exception.SpringTutorialException;
 import net.rahmi.springboottutorial.data.dto.ProductDto;
 import net.rahmi.springboottutorial.service.ProductService;
 
@@ -82,6 +84,12 @@ public class ProductController
 	  public ProductDto deleteProduct(@PathVariable String productId) 
 	  {
 	    return null;
+	  }
+	  
+	  @PostMapping(value = "/product/exception")
+	  public void exceptionTest() throws SpringTutorialException 
+	  {
+	      throw new SpringTutorialException(ExceptionClass.PRODUCT, HttpStatus.FORBIDDEN, "L'accès est interdit.");
 	  }
 	
 }
